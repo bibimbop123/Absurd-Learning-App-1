@@ -42,11 +42,14 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
-# Configure cache store
+# Copy master.key into image for credentials decryption during build
+COPY config/master.key config/master.key
+
+# Configure cache store for production
 RUN sed -i 's/config.cache_store = :solid_cache_store/config.cache_store = :memory_store/' config/environments/production.rb
 
-# Precompile assets
-RUN bundle exec rake assets:precompile RAILS_MASTER_KEY=$(<config/master.key)
+# Precompile assets using the provided master key
+RUN bundle exec rake assets:precompile
 
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
