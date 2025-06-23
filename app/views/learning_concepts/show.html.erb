@@ -1,0 +1,25 @@
+<div class="container py-5" style="max-width: 900px;">
+
+  <h2 class="display-5 fw-bold text-center mb-4"><%= @concept.name %></h2>
+  <p class="lead text-center text-muted mb-5"><%= @concept.description %></p>
+
+  <h3 class="fs-4 mb-4 text-decoration-underline text-primary">Generated Absurd Stories:</h3>
+
+  <% @absurd_stories.each do |story| %>
+    <div class="card shadow-sm mb-4 border-0">
+      <div class="card-header bg-dark text-white fw-semibold">
+        <%= story.absurd_theme.name %> Theme
+      </div>
+      <div class="card-body">
+        <p class="card-text" style="font-size: 1.1rem; line-height: 1.7; font-family: 'Georgia', serif; color: #333;">
+          <%= simple_format(story.story_text) %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="mt-4 text-center">
+    <%= link_to "← Back to Select Another", root_path, class: "btn btn-outline-primary" %>
+  </div>
+
+</div>

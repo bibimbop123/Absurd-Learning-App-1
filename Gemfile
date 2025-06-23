@@ -24,9 +24,10 @@ gem "jbuilder"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
-gem "solid_cache"
-gem "solid_queue"
-gem "solid_cable"
+# NOTE add later 
+# gem "solid_cache"
+# gem "solid_queue"
+# gem "solid_cable"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -39,6 +40,16 @@ gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+gem 'ruby-openai'
+# filepath: /Users/brian/Projects/Absurd-Learning-App-1/Gemfile
+gem "simple_form"
+# filepath: /Users/brian/Projects/Absurd-Learning-App-1/Gemfile
+gem "annotate"
+
+# filepath: /Users/brian/Projects/Absurd-Learning-App-1/Gemfile
+gem "rails-erd"
+
+gem "solid_queue"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -54,46 +65,11 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-end
-
-# Additional gems for AppDev 2
-gem "active_link_to"
-gem "awesome_print"
-gem "dotenv"
-gem "faker"
-gem "htmlbeautifier"
-gem "http"
-gem "table_print"
-gem "simple_form"
-gem "devise"
-gem "pundit"
-gem "ransack"
-gem "strip_attributes"
-gem "validate_url"
-gem "carrierwave"
-gem "cloudinary"
-gem "kaminari"
-
-group :development do
-  gem "annotaterb"
   gem "better_errors"
-  gem "binding_of_caller"
-  gem "pry-rails"
-  gem "rails-erd"
-  gem "rufo"
-  gem "haikunator"
-end
-
-group :development, :test do
-  gem "rspec-rails", "~> 7.1.1"
-  gem "grade_runner", "~> 0.0.13"
 end
 
 group :test do
-  gem "shoulda-matchers", "~> 6.4"
-  gem "rspec-html-matchers"
-  gem "rails-controller-testing"
-  gem "webmock"
+  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.11.0"
+  gem "selenium-webdriver"
 end

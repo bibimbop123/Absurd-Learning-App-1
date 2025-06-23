@@ -21,27 +21,14 @@ default: &default
 
 
 development:
-  primary: &primary_development
-    <<: *default
-    database: rails_8_template_development
-  cache:
-    <<: *primary_development
-    database: rails_8_template_development_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_development
-    database: rails_8_template_development_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_development
-    database: rails_8_template_development_cable
-    migrations_paths: db/cable_migrate
+  <<: *default
+  database: absurd_learning_app_development
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: rails_8_template
+  #username: absurd_learning_app
 
   # The password associated with the PostgreSQL role (username).
   #password:
@@ -69,7 +56,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rails_8_template_test
+  database: absurd_learning_app_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -94,17 +81,19 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    url: <%= ENV["DATABASE_URL"] %>
-    encoding: utf8
-  cache:
-    <<: *primary_production
-    database: rails_8_template_production_cache
-    migrations_paths: db/cache_migrate
-  queue:
-    <<: *primary_production
-    database: rails_8_template_production_queue
-    migrations_paths: db/queue_migrate
-  cable:
-    <<: *primary_production
-    database: rails_8_template_production_cable
-    migrations_paths: db/cable_migrate
+    database: absurd_learning_app_production
+    username: absurd_learning_app
+    password: <%= ENV["ABSURD_LEARNING_APP_DATABASE_PASSWORD"] %>
+  # NOTE: ADD THE GEMS TO YOUR GEMFILE if you want to use these features.r
+  # cache:
+  #   <<: *primary_production
+  #   database: absurd_learning_app_production_cache
+  #   migrations_paths: db/cache_migrate
+  # queue:
+  #   <<: *primary_production
+  #   database: absurd_learning_app_production_queue
+  #   migrations_paths: db/queue_migrate
+  # cable:
+  #   <<: *primary_production
+  #   database: absurd_learning_app_production_cable
+  #   migrations_paths: db/cable_migrate

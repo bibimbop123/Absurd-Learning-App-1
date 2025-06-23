@@ -1,0 +1,70 @@
+<div class="container py-5 bg-warning min-vh-100 d-flex flex-column justify-content-center align-items-center text-center">
+
+  <h1 class="mb-3 display-4 fw-bold">Absurd Learning App</h1>
+
+  <h2 class="mb-4 fst-italic fs-4 px-3">"Logic will get you from A to B. Imagination will take you everywhere." — Albert Einstein</h2>
+
+  <div class="mb-4">
+    <%= image_tag "Rhino.png", alt: "Rhino Image", class: "img-fluid rounded shadow-lg", style: "max-width: 200px;" %>
+  </div>
+
+  <h3 class="mb-3 fs-3">Learn how to learn — through stories as wild as your imagination.</h3>
+
+  <h5 class="mb-5 px-3 text-muted">Inspired by Barbara Oakley’s <em>How to Learn Math</em>, this app turns complex learning concepts into hilarious, surreal stories.</h5>
+
+  <div class="card shadow-lg p-4 mb-5 bg-light" style="max-width: 600px; width: 100%;">
+    <h2 class="mb-4">Choose Your Journey</h2>
+
+    <%= form_with url: generate_story_learning_concepts_path, method: :post, local: true do %>
+      <div class="mb-4 text-start">
+        <label for="concept-select" class="form-label">Learning Concept:</label>
+        <%= select_tag :concept_id,
+            options_from_collection_for_select(@concepts, :id, :name),
+            id: "concept-select",
+            class: "form-select" %>
+      </div>
+
+      <div class="mb-4 text-start">
+        <label for="theme_id" class="form-label">Absurd Theme:</label>
+        <%= select_tag :theme_id,
+            options_from_collection_for_select(@themes, :id, :name),
+            class: "form-select" %>
+      </div>
+
+      <div class="d-grid">
+        <%= submit_tag "Generate Absurd Story", class: "btn btn-dark btn-lg" %>
+      </div>
+    <% end %>
+</div>
+<% if @absurd_stories.present? %>
+  <h2 class="my-4">Generated Absurd Stories:</h2>
+
+  <div id="absurdStoriesCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <% @absurd_stories.each_with_index do |story, index| %>
+        <div class="carousel-item <%= 'active' if index == 0 %>">
+          <div class="card h-100 shadow-sm border-0 mx-auto" style="max-width: 600px;">
+            <div class="card-header bg-dark text-white fw-bold">
+              <%= story.absurd_theme.name %> Theme
+             (<%= story.learning_concept.name %>)
+            </div>
+            <div class="card-body text-start">
+              <p class="card-text"><%= story.story_text %></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#absurdStoriesCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#absurdStoriesCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<% else %>
+  <p class="text-muted">No stories generated yet. Please select a concept and theme to generate a story.</p>
+<% end %>
