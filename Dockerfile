@@ -5,19 +5,24 @@
 # docker build -t rails_8_template .
 # docker run -d -p 80:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name rails_8_template rails_8_template
 
-# For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
-
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version
 ARG RUBY_VERSION=3.2.1
 FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
 # Rails app lives here
 WORKDIR /rails
 
-# Install base packages
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+# Install base packages with retry logic
+RUN bash -c "for i in {1..5}; do \
+    apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      gnupg \
+      ca-certificates \
+      curl \
+      libjemalloc2 \
+      libvips \
+      postgresql-client && \
+    rm -rf /var/lib/apt/lists/* && break || sleep 10; \
+done"
 
 # Set production environment
 ENV RAILS_ENV="production" \
@@ -28,10 +33,19 @@ ENV RAILS_ENV="production" \
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
-# Install packages needed to build gems
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config nodejs npm && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+# Install build tools with retry logic
+RUN bash -c "for i in {1..5}; do \
+    apt-get update -qq && \
+    apt-get install --no-install-recommends -y \
+      build-essential \
+      git \
+      libpq-dev \
+      libyaml-dev \
+      pkg-config \
+      nodejs \
+      npm --fix-missing && \
+    rm -rf /var/lib/apt/lists/* && break || sleep 10; \
+done"
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
