@@ -23,10 +23,9 @@ class LearningConceptsController < ApplicationController
     @theme = AbsurdTheme.find(params[:theme_id])
 
     client =  OpenAI::Client.new(
-      access_token: ENV.fetch("OPENAI_API_KEY"),
+      access_token: Rails.application.credentials.dig(:openai, :api_key),
       log_errors: true # Highly recommended in development, so you can see what errors OpenAI is returning. Not recommended in production because it could leak private data to your logs.
     )
-   
 
     response = client.chat(
     parameters: {
