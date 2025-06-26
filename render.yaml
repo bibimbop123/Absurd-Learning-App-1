@@ -1,14 +1,20 @@
 services:
   - type: web
-    name: absurd-learning-app # the name of this service, you should change this
-    runtime: ruby # this app is written in ruby
-    plan: free # make sure to set this to free or you'll get billed $$$
-    buildCommand: "./bin/render-build.sh" # we already created these two files for you
-    startCommand: "./bin/render-start.sh"
-    envVars: # this section sets some ENV variables needed by Render for deployment
-      - key: SECRET_KEY_BASE
-        generateValue: true
+    name: absurd-learning-app
+    runtime: ruby
+    plan: free
+    buildCommand: './bin/render-build.sh'
+    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: './bin/render-start.sh'
+    envVars:
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: absurd-learning-app-db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false # You'll provide this value on Blueprint creation
       - key: WEB_CONCURRENCY
-        value: 2
+        value: 2 # Recommended default
+databases:
+  - name: absurd-learning-app-db
+    plan: free
