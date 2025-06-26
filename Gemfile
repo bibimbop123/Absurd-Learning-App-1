@@ -49,7 +49,7 @@ gem "annotate"
 # filepath: /Users/brian/Projects/Absurd-Learning-App-1/Gemfile
 gem "rails-erd"
 
-gem "solid_queue"
+# gem "solid_queue"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
