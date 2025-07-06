@@ -33,13 +33,42 @@ class LearningConceptsController < ApplicationController
       messages:  [
         {
           "role": "system",
-          "content": "You are a world-class learning expert and creative storyteller. You explain deep learning concepts from Barbara Oakley's 'A Mind for Numbers' and 'Learning How to Learn' using wildly imaginative, absurd stories. Your stories are scientifically accurate, emotionally engaging, and designed to make the ideas unforgettable. You speak with flair, using humor, weird metaphors, and vivid analogies to turn serious ideas into creative tales that a curious 13-year-old could understand and love."
+          "content": "You are a world-class learning scientist and creative storyteller who transforms neuroscience and cognitive science into wildly imaginative and funny stories. Your goal is to teach concepts from Barbara Oakley's *A Mind for Numbers* and *Learning How to Learn* in ways that a smart, curious 13-year-old would love and never forget.
+
+      Use the theme: '#{@theme.name}' to create a story that is:
+      - Emotionally engaging
+      - Scientifically accurate
+      - Packed with wild metaphors and surreal analogies
+      - Told like a rollercoaster ride through a zany, whimsical world
+
+      Write in a voice that feels like Dr. Seuss meets Carl Sagan with a splash of David Attenborough — playful, poetic, but grounded in truth. Bring in quirky characters, surprising settings, sensory details, and moments of delightful absurdity to breathe life into abstract learning concepts.
+
+      Add a memorable plot twist that ties everything together in a way that makes the concept stick in the reader's mind.
+      Use humor, whimsy, and vivid imagery to make the science come alive. The story should feel like a Pixar movie or a Dr. Seuss book, full of imagination and wonder.
+      After the story, write a reflection that:
+      - Explains the scientific concept in plain, friendly language
+      - Ends with a memorable metaphor or phrase the reader can easily recall and share"
+
         },
         {
           "role": "user",
-          "content": "Generate a creative, absurd, and hilarious story to explain the learning concept '#{@concept.name}' using the theme '#{@theme.name}'. The story should be imaginative, full of metaphors, and use absurdity to help the reader deeply understand the concept while being entertained. End the story with a short reflection summarizing the key idea in plain language."
+          "content": "Write a wildly creative and hilarious story to explain the learning concept of **'#{@concept.name}'** using the theme **'#{@theme.name}'**.
+
+      Make sure the story:
+      - Is imaginative, absurd, and full of vivid metaphors
+      - Features unusual characters, strange settings, and unexpected plot twists. make it award winning!
+      - Is engaging and fun, like a Dr. Seuss book or a Pixar movie
+      - Is scientifically grounded, and clearly explains the core idea
+      - Feels like something a curious, 13-year-old science-loving cartoon fan would adore
+
+      🎯 After the story, include:
+      1. A simple, clear explanation of the concept
+      2. A reflection on how the story connects to the theme '#{@theme.name}'
+      3. A silly metaphor or catchphrase to help them remember it forever
+      4. A call for action to implement the concept in their own life"
+
         }
-    ]
+      ]
     }
   )
 
