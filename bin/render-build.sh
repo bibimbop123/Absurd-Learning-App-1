@@ -15,4 +15,4 @@ bundle exec rake assets:clean
 bundle exec rake db:migrate
 
 # Seed the database (idempotent seeds recommended)
-bundle exec rake db:seed
+bundle exec rake db:seed:replant
