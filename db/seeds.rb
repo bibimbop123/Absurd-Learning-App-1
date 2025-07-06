@@ -33,17 +33,47 @@ end
 # === Absurd Themes ===
 
 ABSURD_THEMES = [
-  { name: "Brian Kim, the Rhino Astronaut", description: "Brian Kim, the Rhino Astronaut and his adventures with Space budz companions" },
-  { name: "Squirrels Running a University", description: "Nuts about knowledge and grading on acorn curves." },
-  { name: "Space Pirates", description: "Looting black holes for math wisdom." },
-  { name: "Underwater Kingdom", description: "Octopus professors teaching in bubble classrooms." },
-  { name: "Alien Kindergarten", description: "Galactic toddlers learning quantum arithmetic." },
-  { name: "Haunted Library", description: "Ghosts whisper equations and spooky analogies in the dark." },
-  { name: "Talking Vegetables", description: "Carrots teaching calculus and spinach explaining statistics." },
-  { name: "Time-Traveling Knights", description: "Armor-clad warriors debating philosophy with robots." },
-  { name: "Cats in Government", description: "Meow-nisters passing laws on logic and lattice theory." },
-  { name: "Insect Rock Bands", description: "Beetles belting out brainwaves in neuroscience concerts." },
-  { name: "Dessert Island", description: "Cakes and cookies debating over chemistry and chaos theory." }
+  { name: "Brian Kim, the Rhino Astronaut", description: "Brian Kim, the Rhino Astronaut, who likes to move it, move it" },
+  { name: "Squirrelversity: The Nuttiest Ivy League",
+    description: "Where tenured squirrels chase truth up trees and debate philosophy on power lines. Acornomics 101? Mandatory."
+  },
+  {
+    name: "Quantum Buccaneers of the Andromeda Rift",
+    description: "Space pirates sail gravity waves, cracking cosmic codes and plundering wormholes for ancient math relics."
+  },
+  {
+    name: "Abyssal Academia: The Coral Council",
+    description: "In a sunken empire lit by bioluminescent syllabi, octopus deans grade homework on kelp scrolls—one ink splatter at a time."
+  },
+  {
+    name: "Intergalactic Toddlerverse: Crayons & Quarks",
+    description: "Alien preschoolers in anti-gravity cribs chew on string theory and burp the Fibonacci sequence."
+  },
+  {
+    name: "The Whispering Archives",
+    description: "A haunted library where theorems scribble themselves in the air, and spectral tutors teach calculus by candlelight."
+  },
+  {
+    name: "The Veggie Think Tank™",
+    description: "Radical roots with radical ideas—Professor Parsnip explains multivariable regression while Broccoli runs bootcamp in Bayesian logic."
+  },
+  {
+    name: "ChronoKnights & the Logic Engine",
+    description: "Steel-clad philosophers wielding holographic swords debate Descartes and GPTs in the halls of Neo-Camelot."
+  },
+  {
+    name: "Meowliament: The Feline Federation",
+    description: "Cat congressmembers nap on constitutions, pass laws of thermomeowdynamics, and purr over policy matrices."
+  },
+  {
+    name: "NeuroBeetles: The Brainwave Tour",
+    description: "An insectoid rock band touring synaptic arenas, shredding on neuron-shaped guitars, and jamming on the nature of consciousness."
+  },
+  {
+    name: "Dessertopia: The Sweet Science Society",
+    description: "Gingerbread generals and cupcake chemists host sugar-fueled debates on entropy, emulsification, and edible fractals."
+  }
+
 ]
 
 def seed_absurd_themes
