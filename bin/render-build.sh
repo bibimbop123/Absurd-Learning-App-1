@@ -1,20 +1,21 @@
 #!/usr/bin/env bash
 set -o errexit
 
-# Install Ruby gems
+echo "Installing Ruby gems..."
 bundle install
 
-# Precompile Rails assets
+echo "Precompiling Rails assets..."
 bundle exec rake assets:precompile
 
-# Clean up old assets
+echo "Cleaning up old assets..."
 bundle exec rake assets:clean
 
-# Run database migrations
+echo "Running database migrations..."
 bundle exec rake db:migrate
 
-# Forcefully replant seeds in production (DANGER: this will wipe all data)
+echo "Seeding database..."
 if [[ "$RAILS_ENV" == "production" ]]; then
+  echo "WARNING: Reseeding production database (all data will be wiped)!"
   DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bundle exec rake db:seed:replant
 else
   bundle exec rake db:seed:replant
