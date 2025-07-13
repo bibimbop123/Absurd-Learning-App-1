@@ -34,6 +34,7 @@ end
 
 ABSURD_THEMES = [
   { name: "Brian Kim, the Rhino Astronaut", description: "Brian Kim, the Rhino Astronaut, who likes to train to be the first rhino on Mars. equipped with a kinesiology degree and deep understanding of 'story of b' by Daniel Quinn" },
+  { name: "Emmanuel, the Time Traveling Health Detective", description: "Emmanuel, the Time Traveling Health Detective, who uses his knowledge of fizzy soda and nutrition to solve health mysteries of famous figures throughout time." },
   { name: "Squirrelversity: The Nuttiest Ivy League",
     description: "Where tenured squirrels chase truth up trees and debate philosophy on power lines. Acornomics 101? Mandatory."
   },
